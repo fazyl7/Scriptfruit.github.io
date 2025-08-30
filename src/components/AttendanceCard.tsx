@@ -1,4 +1,3 @@
-// components/AttendanceCard.tsx
 import { Card, CardContent, Typography, LinearProgress, Chip, Stack, ButtonGroup, Button, Tooltip } from '@mui/material';
 import { pct, canSkipToday, attendanceStatus, remainingSkips } from '../utils/attendance';
 
