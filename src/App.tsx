@@ -60,7 +60,7 @@ export default function App() {
     total: 0,
   });
 
-  // --- Effects ---
+
   useEffect(() => {
     localStorage.setItem(THEME_KEY, mode);
   }, [mode]);
@@ -69,12 +69,12 @@ export default function App() {
     localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
   }, [courses]);
 
-  // --- Theme ---
+
   const theme = useMemo(() => makeTheme(mode), [mode]);
   const toggleMode = () =>
     setMode((m) => (m === "light" ? "dark" : "light"));
 
-  // --- Course update helpers ---
+  // --- Course update
   const updateCourse = (id: string, deltaAttended: number, deltaTotal: number) => {
     setCourses((prev) =>
       prev.map((c) =>
@@ -95,7 +95,7 @@ export default function App() {
     setCourses((prev) => prev.filter((c) => c.id !== id));
   const resetAll = () => setCourses(mockCourses);
 
-  // --- Filter + Search ---
+  // Search ---
   const filteredCourses = courses.filter((c) => {
     const matchSearch = c.name.toLowerCase().includes(search.toLowerCase());
     const matchFilter =
@@ -105,7 +105,7 @@ export default function App() {
     return matchSearch && matchFilter;
   });
 
-  // --- Branch/Semester Logic ---
+  // --- Branch/Semester-
   const semesterKey =
     semester === "First Year" && group ? `First Year-${group}` : semester;
 
@@ -114,7 +114,7 @@ export default function App() {
       ? courseCatalog[branch]?.[semesterKey] || []
       : [];
 
-  // --- Dialog Handlers ---
+  
   const handleDialogOpen = () => {
     setNewCourse({ id: "", name: "", attended: 0, total: 0 });
     setOpenDialog(true);
@@ -130,13 +130,13 @@ export default function App() {
 
   const totalCourses = courses.length;
 
-  // --- UI ---
+ 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar position="sticky" elevation={0}>
         <Toolbar>
-          {/* Logo + Title */}
+          {/* Title */}
           <Box display="flex" alignItems="center" sx={{ flexGrow: 1 }}>
             <img
               src="/src/assets/logo.png"
@@ -169,7 +169,7 @@ export default function App() {
       </AppBar>
 
       <Container sx={{ py: 3 }}>
-        {/* Branch/Semester/Group Selectors */}
+        {/* Branch/SemesterSelectors */}
         <Grid container spacing={2} sx={{ mb: 3 }}>
           <Grid item xs={12} sm={6} md={4} {...({} as any)}>
             <FormControl fullWidth sx={{ minWidth: 200 }}>
@@ -218,7 +218,7 @@ export default function App() {
           )}
         </Grid>
 
-        {/* Selected Courses by Branch/Sem */}
+        {/* Selected Courses*/}
         <Grid container spacing={2} sx={{ mb: 3 }}>
           {selectedCourses.map((c) => (
             <Grid item key={c.id} xs={12} sm={6} md={4} {...({} as any)}>
@@ -270,7 +270,7 @@ export default function App() {
           Total Courses: {totalCourses} | Showing: {filteredCourses.length}
         </Typography>
 
-        {/* All Courses (Search + Filter applied) */}
+        {/* All Courses (Filter applied) */}
         <Grid container spacing={2}>
           {filteredCourses.map((c) => (
             <Grid item key={c.id} xs={12} sm={6} md={4} {...({} as any)}>
@@ -287,7 +287,7 @@ export default function App() {
         </Grid>
       </Container>
 
-      {/* Add/Edit Course Dialog */}
+      {/* Add/Edit Course*/}
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle>Add Course</DialogTitle>
         <DialogContent>
