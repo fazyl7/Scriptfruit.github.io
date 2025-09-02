@@ -1,8 +1,8 @@
 import type { Course } from "../utils/types";
 export const mockCourses: Course[] = [
   { id: "c1", name: "Mathematics I", attended: 10, total: 12 },
-  { id: "c2", name: "Physics", attended: 8, total: 12 },
-  { id: "c3", name: "Chemistry", attended: 9, total: 12 },
+  { id: "c2", name: "Engineering Physics", attended: 8, total: 12 },
+  { id: "c3", name: "Engineering Chemistry", attended: 9, total: 12 },
 ];
 export type CourseCatalog = {
   [branch: string]: {
