@@ -139,7 +139,7 @@ export default function App() {
           {/* Title */}
           <Box display="flex" alignItems="center" sx={{ flexGrow: 1 }}>
             <img
-              src="/src/assets/logo.png"
+              src="logo.png"
               alt="ScriptFruit Logo"
               width={55}
               height={55}
